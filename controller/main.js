@@ -5,7 +5,7 @@ let itemsForm = document.getElementById('items');
 let customerManageForm = document.getElementById('customers');
 let customersAddingForm = document.getElementById('add-customer')
 
-$('#btn-home').on('click', function (e) {
+$('#btn-home, #btn-return-dashboard').on('click', function (e) {
    showDashboard();
 });
 
