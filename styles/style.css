@@ -5,3 +5,43 @@ body {
     font-weight: bold;
     color: #2c8c43 !important;
 }
+
+#content-area {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-banner {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/images/dashboard.jpg');
+    background-size: cover;
+    color: white;
+    padding: 40px 0;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+.hero-banner h2 {
+    font-weight: bold;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.dashboard-card {
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+.card-count {
+    font-size: 2rem;
+    font-weight: bold;
+}
