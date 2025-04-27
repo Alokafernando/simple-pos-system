@@ -286,7 +286,7 @@
             </div>
           </div>
           <div class="col-md-6 text-end align-self-center">
-            <button class="btn btn-info me-2">New Item</button>
+            <button class="btn btn-info me-2" id="btn-add-item">New Item</button>
             <button class="btn btn-warning">View All Items</button>
           </div>
         </div>
@@ -451,7 +451,7 @@
       </div>
 
       <div class="form-actions">
-        <button type="button" class="btn btn-secondary" id="cancelButton">Cancel</button>
+        <button type="button" class="btn btn-secondary" id="cancel-Button">Cancel</button>
         <button type="submit" class="btn btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
@@ -463,6 +463,66 @@
       </div>
     </form>
   </div>
+
+<!--  item form-->
+  <div id="add-item" class="p-4 border rounded shadow-sm bg-white" style="display: none;">
+    <div class="header">
+      <h1>Add New Item</h1>
+      <p>Enter item details below</p>
+    </div>
+
+    <form id="add-item-form">
+      <div class="form-grid">
+        <div class="form-group full-width">
+          <label class="required" for="itemName">Item Name</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            <input type="text" id="itemName" name="itemName" class="form-control" placeholder="Product name" required>
+          </div>
+          <div class="error-message" id="itemNameError">Please enter an item name</div>
+        </div>
+
+        <div class="form-group">
+          <label class="required" for="price">Price</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"></line>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+            <input type="number" id="price" name="price" class="form-control" placeholder="0.00" step="0.01" min="0" required>
+          </div>
+          <div class="error-message" id="priceError">Please enter a valid price</div>
+        </div>
+
+        <div class="form-group">
+          <label class="required" for="quantity">Quantity</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+            <input type="number" id="quantity" name="quantity" class="form-control" placeholder="1" min="1" step="1" required>
+          </div>
+          <div class="error-message" id="quantityError">Please enter a valid quantity</div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" id="cancelButton">Cancel</button>
+        <button type="submit" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+            <polyline points="7 3 7 8 15 8"></polyline>
+          </svg>
+          Save Item
+        </button>
+      </div>
+    </form>
+  </div>
+
 
 
 </div>

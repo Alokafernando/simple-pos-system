@@ -4,6 +4,7 @@ let ordersForm = document.getElementById('orders');
 let itemsForm = document.getElementById('items');
 let customerManageForm = document.getElementById('customers');
 let customersAddingForm = document.getElementById('add-customer')
+let itemAddingForm = document.getElementById("add-item")
 
 $('#btn-home, #btn-return-dashboard').on('click', function (e) {
    showDashboard();
@@ -12,7 +13,6 @@ $('#btn-home, #btn-return-dashboard').on('click', function (e) {
 $('#btn-orders').on('click', function (e) {
    showOrdersForm();
 });
-
 
 
 $('#btn-items').on('click', function (){
@@ -27,6 +27,9 @@ $('#btn-add-customer-1, #btn-add-customer-2').on('click', function () {
     showCustomerAddingForm();
 });
 
+$('#btn-add-item').on('click', function (){
+    showAddItemForm();
+});
 
 const showDashboard = () => {
     dashboard.style.display = 'block';
@@ -67,4 +70,13 @@ const showCustomerAddingForm = () => {
     itemsForm.style.display = 'none';
     customerManageForm.style.display = 'none';
     customersAddingForm.style.display = 'block';
+}
+
+const showAddItemForm = () => {
+    dashboard.style.display = 'none';
+    ordersForm.style.display = 'none';
+    itemsForm.style.display = 'none';
+    customerManageForm.style.display = 'none';
+    customersAddingForm.style.display = 'none';
+    itemAddingForm.style.display = 'block';
 }
