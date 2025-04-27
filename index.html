@@ -314,6 +314,63 @@
       </div>
     </div>
 
+    <!-- Customers -->
+    <div id="customers" style="display: none;">
+      <h3><i class="fas fa-users me-2"></i>Customer Management</h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#" onclick="showDashboard()">Home</a></li>
+          <li class="breadcrumb-item active">Customer</li>
+        </ol>
+      </nav>
+
+      <div class="search-area">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Customer Search</h5>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Input Name/NIC/Tp Here">
+              <button class="btn btn-success" type="button">Search</button>
+            </div>
+            <div class="input-group">
+              <select class="form-select">
+                <option selected>Name</option>
+                <option>NIC</option>
+                <option>Phone</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 text-end align-self-center">
+            <button class="btn btn-info me-2" onclick="showAddCustomers()">New Customer</button>
+            <button class="btn btn-warning">View All Customers</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-group mb-3">
+        <button class="btn btn-danger">Delete</button>
+        <button class="btn btn-warning">Update</button>
+        <button class="btn btn-info">Details</button>
+        <button class="btn btn-secondary">Clear</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Salary</th>
+          </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
 
   </div>
 </div>
