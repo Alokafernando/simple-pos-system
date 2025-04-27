@@ -45,3 +45,8 @@ body {
     font-size: 2rem;
     font-weight: bold;
 }
+
+.table th {
+    background-color: #17a2b8;
+    color: white;
+}
