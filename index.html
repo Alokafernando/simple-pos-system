@@ -22,13 +22,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" href="#" onclick="showDashboard()">Home</a>
+          <a class="nav-link active" id="btn-home" href="#" >Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" onclick="showOrders()">Orders</a>
+          <a class="nav-link" id="btn-orders" href="#" >Orders</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" onclick="showItems()">Items</a>
+          <a class="nav-link" href="#" >Items</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
@@ -114,14 +114,159 @@
       </div>
     </div>
 
+    <!-- Orders -->
+    <div id="orders" style="display: none">
+      <h3><i class="fas fa-file-invoice me-2"></i>Create Order</h3>
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Customer Information</h5>
+              <div class="mb-3 row">
+                <label class="col-sm-4 col-form-label">Customer:</label>
+                <div class="col-sm-8">
+                  <div class="input-group">
+                    <select class="form-select">
+                      <!--                      <option>C001</option>-->
+                      <!--                      <option>C002</option>-->
+                      <!--                      <option>C003</option>-->
+                    </select>
+                    <button class="btn btn-success" onclick="showAddCustomers()">New Customer</button>                      <!--ffffffffffffffffffff-->
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Address:</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Tel:</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Credit Limit:</label>
+                <input type="text" class="form-control">
+              </div>
+
+              <h5 class="card-title mt-4">Invoice Details</h5>
+              <div class="mb-3">
+                <label class="form-label">Date:</label>
+                <input type="date" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Order ID:</label>
+                <input type="text" class="form-control" readonly >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Item Selection</h5>
+              <div class="mb-3 row">
+                <label class="col-sm-4 col-form-label">Item:</label>
+                <div class="col-sm-8">
+                  <select class="form-select">
+                    <!--                    <option>Coca-Cola 1L</option>-->
+                    <!--                    <option>Pepsi 1L</option>-->
+                    <!--                    <option>Sprite 500ml</option>-->
+                  </select>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label class="col-sm-4 col-form-label">Price:</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" readonly >
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label class="col-sm-4 col-form-label">Quantity:</label>
+                <div class="col-sm-8">
+                  <input type="number" class="form-control" >
+                </div>
+              </div>
+
+              <div class="d-grid">
+                <button class="btn btn-primary" onclick="addOrderItem()">Order Item</button>
+              </div>
+
+              <h5 class="card-title mt-4">Order Details</h5>
+              <div class="mb-3 row">
+                <label class="col-sm-4 col-form-label">Order Quantity:</label>
+                <div class="col-sm-8">
+                  <input type="number" class="form-control" readonly >
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label class="col-sm-4 col-form-label">Credit Limit:</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" readonly >
+                </div>
+              </div>
+
+              <div class="d-grid mt-4">
+                <button class="btn btn-danger">Place Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Items Table -->
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="orderItemsTable">
+              <thead>
+              <tr>
+                <th style="background-color: #17a2b8; color: white;">Item Name</th>
+                <th style="background-color: #17a2b8; color: white;">Price</th>
+                <th style="background-color: #17a2b8; color: white;">Quantity</th>
+                <th style="background-color: #17a2b8; color: white;">Total</th>
+              </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Total Section -->
+          <div class="order-total-section">
+            <div class="total-amount">Total: 00.0Rs/=</div>
+            <div class="row">
+              <div class="col-md-4">
+                <label class="form-label">Cash:</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Balance:</label>
+                <input type="text" class="form-control" readonly>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Discount:</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+
+            <div class="order-action-buttons">
+              <button class="btn btn-warning">Clear</button>
+              <button class="btn btn-danger">Remove Order</button>
+              <button class="btn btn-success">Submit Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 
   </div>
 </div>
 
 
-
-<script src="lib/jquery-3.7.1.min.js"></script>
+<script src="assets/lib/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+
 </body>
 </html>
