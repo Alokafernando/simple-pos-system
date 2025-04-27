@@ -3,7 +3,7 @@ let dashboard = document.getElementById('dashboard');
 let ordersForm = document.getElementById('orders');
 let itemsForm = document.getElementById('items');
 let customerManageForm = document.getElementById('customers');
-let customersAddingForm = document.getElementById('add-customers-form')
+let customersAddingForm = document.getElementById('add-customer')
 
 $('#btn-home').on('click', function (e) {
    showDashboard();
