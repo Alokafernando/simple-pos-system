@@ -259,6 +259,60 @@
       </div>
     </div>
 
+    <!-- Items -->
+    <div id="items" style="display: none;">
+      <h3><i class="fas fa-cubes me-2"></i>Items</h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#" onclick="showDashboard()">Home</a></li>
+          <li class="breadcrumb-item active">Items</li>
+        </ol>
+      </nav>
+
+      <div class="search-area">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Item Search</h5>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Input Item Name/Code Here">
+              <button class="btn btn-success" type="button">Search</button>
+            </div>
+            <div class="input-group">
+              <select class="form-select">
+                <option selected>Name</option>
+                <option>Code</option>
+                <option>Category</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 text-end align-self-center">
+            <button class="btn btn-info me-2">New Item</button>
+            <button class="btn btn-warning">View All Items</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-group mb-3">
+        <button class="btn btn-danger">Delete</button>
+        <button class="btn btn-warning">Edit</button>
+        <button class="btn btn-info">Details</button>
+        <button class="btn btn-secondary">Clear</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+          </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
 
   </div>
