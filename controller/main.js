@@ -6,6 +6,7 @@ let customerManageForm = document.getElementById('customers');
 let customersAddingForm = document.getElementById('add-customer');
 let itemAddingForm = document.getElementById("add-item");
 let itemViewPanel = document.getElementById('item-view');
+let customerViewPanel = document.getElementById('item-customer');
 
 $('#btn-home, #btn-return-dashboard').on('click', function (e) {
    showDashboard();
@@ -35,6 +36,10 @@ $('#btn-view-items').on('click', function (){
     showItemViewPanel();
 });
 
+$('#btn-view-customers').on('click', function (){
+    showCustomerViewPanel();
+});
+
 const showDashboard = () => {
     dashboard.style.display = 'block';
     ordersForm.style.display = 'none';
@@ -43,6 +48,7 @@ const showDashboard = () => {
     customersAddingForm.style.display = 'none';
     itemAddingForm.style.display = 'none';
     itemViewPanel.style.display = 'none';
+    customerViewPanel.style.display = 'none';
 }
 
 const showOrdersForm = () => {
@@ -53,6 +59,7 @@ const showOrdersForm = () => {
     customersAddingForm.style.display = 'none';
     itemAddingForm.style.display = 'none';
     itemViewPanel.style.display = 'none';
+    customerViewPanel.style.display = 'none';
 }
 
 const showItemsForm = () => {
@@ -63,6 +70,7 @@ const showItemsForm = () => {
     customersAddingForm.style.display = 'none';
     itemAddingForm.style.display = 'none';
     itemViewPanel.style.display = 'none';
+    customerViewPanel.style.display = 'none';
 }
 
 const showCustomerManageForm = () => {
@@ -73,6 +81,7 @@ const showCustomerManageForm = () => {
     customersAddingForm.style.display = 'none';
     itemAddingForm.style.display = 'none';
     itemViewPanel.style.display = 'none';
+    customerViewPanel.style.display = 'none';
 }
 
 
@@ -84,6 +93,7 @@ const showCustomerAddingForm = () => {
     customersAddingForm.style.display = 'block';
     itemAddingForm.style.display = 'none';
     itemViewPanel.style.display = 'none';
+    customerViewPanel.style.display = 'none';
 }
 
 const showAddItemForm = () => {
@@ -94,6 +104,7 @@ const showAddItemForm = () => {
     customersAddingForm.style.display = 'none';
     itemAddingForm.style.display = 'block';
     itemViewPanel.style.display = 'none';
+    customerViewPanel.style.display = 'none';
 }
 
 const showItemViewPanel = () => {
@@ -104,4 +115,16 @@ const showItemViewPanel = () => {
     customersAddingForm.style.display = 'none';
     itemAddingForm.style.display = 'none';
     itemViewPanel.style.display = 'block';
+    customerViewPanel.style.display = 'none';
+}
+
+const showCustomerViewPanel = () => {
+    dashboard.style.display = 'none';
+    ordersForm.style.display = 'none';
+    itemsForm.style.display = 'none';
+    customerManageForm.style.display = 'none';
+    customersAddingForm.style.display = 'none';
+    itemAddingForm.style.display = 'none';
+    itemViewPanel.style.display = 'none';
+    customerViewPanel.style.display = 'block';
 }

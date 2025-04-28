@@ -343,7 +343,7 @@
           </div>
           <div class="col-md-6 text-end align-self-center">
             <button class="btn btn-info me-2 " id="btn-add-customer-2">New Customer</button>
-            <button class="btn btn-warning">View All Customers</button>
+            <button class="btn btn-warning" id="btn-view-customers">View All Customers</button>
           </div>
         </div>
       </div>
@@ -524,7 +524,7 @@
     </form>
   </div>
 
-
+  <!--view all items-->
   <div id="item-view" style="display: none;">
     <div class="table-responsive">
       <table class="table table-bordered">
@@ -540,6 +540,25 @@
       </table>
     </div>
   </div>
+
+  <!--view all customers-->
+  <div id="item-customer" style="display: none;">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Salary</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
 
 </div>
