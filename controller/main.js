@@ -37,6 +37,7 @@ const showDashboard = () => {
     itemsForm.style.display = 'none';
     customerManageForm.style.display = 'none';
     customersAddingForm.style.display = 'none';
+    itemAddingForm.style.display = 'none';
 }
 
 const showOrdersForm = () => {
@@ -45,6 +46,7 @@ const showOrdersForm = () => {
     itemsForm.style.display = 'none';
     customerManageForm.style.display = 'none';
     customersAddingForm.style.display = 'none';
+    itemAddingForm.style.display = 'none';
 }
 
 const showItemsForm = () => {
@@ -53,6 +55,7 @@ const showItemsForm = () => {
     itemsForm.style.display = 'block';
     customerManageForm.style.display = 'none';
     customersAddingForm.style.display = 'none';
+    itemAddingForm.style.display = 'none';
 }
 
 const showCustomerManageForm = () => {
@@ -61,6 +64,7 @@ const showCustomerManageForm = () => {
     itemsForm.style.display = 'none';
     customerManageForm.style.display = 'block';
     customersAddingForm.style.display = 'none';
+    itemAddingForm.style.display = 'none';
 }
 
 
@@ -70,6 +74,7 @@ const showCustomerAddingForm = () => {
     itemsForm.style.display = 'none';
     customerManageForm.style.display = 'none';
     customersAddingForm.style.display = 'block';
+    itemAddingForm.style.display = 'none';
 }
 
 const showAddItemForm = () => {
