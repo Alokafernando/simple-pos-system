@@ -23,7 +23,13 @@ $('#add-item-form').on('submit', function (e) {
     let quantity = $('#quantity').val().trim();
 
     if (name === '' || price === '' || quantity === '') {
-        alert("Please fill in all fields.");
+        Swal.fire({
+            title: 'Error!',
+            text: 'Invalid Inputs',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        });
+
         return;
     }
 
@@ -35,7 +41,12 @@ $('#add-item-form').on('submit', function (e) {
 
     loadItem();
     clear();
-    alert("Item saved successfully!");
+
+    Swal.fire({
+        title: "Added Successfully!",
+        icon: "success",
+        draggable: true
+    });
 });
 
 function clear(){
