@@ -6,7 +6,7 @@ let customerManageForm = document.getElementById('customers');
 let customersAddingForm = document.getElementById('add-customer');
 let itemAddingForm = document.getElementById("add-item");
 let itemViewPanel = document.getElementById('item-view');
-let customerViewPanel = document.getElementById('item-customer');
+let customerViewPanel = document.getElementById('view-customer');
 
 $('#btn-home, #btn-return-dashboard').on('click', function (e) {
    showDashboard();
@@ -16,7 +16,7 @@ $('#btn-orders').on('click', function (e) {
    showOrdersForm();
 });
 
-$('#btn-items').on('click', function (){
+$('#btn-items, #cancelButton').on('click', function (){
    showItemsForm();
 });
 
@@ -128,3 +128,4 @@ const showCustomerViewPanel = () => {
     itemViewPanel.style.display = 'none';
     customerViewPanel.style.display = 'block';
 }
+

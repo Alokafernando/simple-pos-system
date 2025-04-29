@@ -512,7 +512,7 @@
 
       <div class="form-actions">
         <button type="button" class="btn btn-secondary" id="cancelButton">Cancel</button>
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" id="btn-item-save" class="btn btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
             <polyline points="17 21 17 13 7 13 7 21"></polyline>
@@ -525,7 +525,7 @@
   </div>
 
   <!--view all items-->
-  <div id="item-view" style="display: none;">
+  <div id="item-view"  style="display: none;">
     <div class="table-responsive">
       <table class="table table-bordered">
         <thead>
@@ -535,14 +535,14 @@
           <th>Quantity</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="view-item-tbody">
         </tbody>
       </table>
     </div>
   </div>
 
   <!--view all customers-->
-  <div id="item-customer" style="display: none;">
+  <div id="view-customer" style="display: none;">
     <div class="table-responsive">
       <table class="table table-bordered">
         <thead>
@@ -568,5 +568,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 <script src="controller/main.js"></script>
 
+<script type="module" src="controller/ItemController.js"></script>
 </body>
 </html>
