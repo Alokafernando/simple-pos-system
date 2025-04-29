@@ -4,7 +4,7 @@ import { ItemModel } from "../model/ItemModel.js";
 function loadItem() {
     $('#view-item-tbody').empty();
 
-    item_db.forEach((item) => {
+    item_db.map((item, index) => {
         $('#view-item-tbody').append(`
             <tr>
                 <td>${item.itemName}</td>
@@ -34,7 +34,7 @@ $('#add-item-form').on('submit', function (e) {
     }
 
     // const newCode = `ITM${String(item_db.length + 1).padStart(3, '0')}`;
-    const newItem = new ItemModel(null, name, parseFloat(price), parseInt(quantity));
+    let newItem = new ItemModel(null, name, parseFloat(price), parseInt(quantity));
 
     item_db.push(newItem);
     console.log("Saved Items:", item_db);

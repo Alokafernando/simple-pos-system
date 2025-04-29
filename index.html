@@ -372,37 +372,24 @@
     </div>
   </div>
 
-  <!--customer form-->
+<!--  add customers-->
   <div id="add-customer" style="display: none;">
     <div class="header">
       <h1>Add New Customer</h1>
       <p>Enter customer details below</p>
     </div>
-
     <form id="add-customers-form">
       <div class="form-grid">
         <div class="form-group">
-          <label class="required" for="firstName">First Name</label>
+          <label class="required" for="name"> Name</label>
           <div class="input-wrapper">
             <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
-            <input type="text" id="firstName" name="firstName" class="form-control" placeholder="John" required>
+            <input type="text" id="name" name="name" class="form-control" placeholder="John" required>
           </div>
           <div class="error-message" id="firstNameError">Please enter a first name</div>
-        </div>
-
-        <div class="form-group">
-          <label class="required" for="lastName">Last Name</label>
-          <div class="input-wrapper">
-            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Doe" required>
-          </div>
-          <div class="error-message" id="lastNameError">Please enter a last name</div>
         </div>
 
         <div class="form-group">
@@ -416,7 +403,6 @@
           </div>
           <div class="error-message" id="emailError">Please enter a valid email address</div>
         </div>
-
         <div class="form-group">
           <label for="phone">Phone Number</label>
           <div class="input-wrapper">
@@ -426,7 +412,6 @@
             <input type="tel" id="phone" name="phone" class="form-control" placeholder="(123) 456-7890">
           </div>
         </div>
-
         <div class="form-group">
           <label class="required" for="nic">NIC Number</label>
           <div class="input-wrapper">
@@ -438,7 +423,16 @@
           </div>
           <div class="error-message" id="nicError">Please enter a valid NIC number</div>
         </div>
-
+        <div class="form-group">
+          <label for="salary">Salary</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"></line>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+            <input type="number" id="salary" name="salary" class="form-control" placeholder="50000" min="0" step="0.01">
+          </div>
+        </div>
         <div class="form-group full-width">
           <label for="address">Address</label>
           <div class="input-wrapper">
@@ -450,7 +444,6 @@
           </div>
         </div>
       </div>
-
       <div class="form-actions">
         <button type="button" class="btn btn-secondary" id="cancel-Button">Cancel</button>
         <button type="submit" class="btn btn-primary">
@@ -553,7 +546,7 @@
           <th>Salary</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="customer-view-tbody">
         </tbody>
       </table>
     </div>
@@ -572,5 +565,6 @@
 <script src="controller/main.js"></script>
 
 <script type="module" src="controller/ItemController.js"></script>
+<script type="module" src="controller/CustomerController.js"></script>
 </body>
 </html>
