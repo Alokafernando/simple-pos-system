@@ -20,7 +20,7 @@ $('#btn-items, #cancelButton').on('click', function (){
    showItemsForm();
 });
 
-$('#btn-customer-manage').on('click', function (){
+$('#btn-customer-manage, #cancel-Button').on('click', function (){
     showCustomerManageForm();
 });
 

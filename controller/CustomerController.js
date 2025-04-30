@@ -17,20 +17,20 @@ function loadCustomers() {
 }
 
 function generateCustomerId() {
-    return `C${String(customer_db.length + 1).padStart(3, '0')}`;
+    return `CUST-${String(customer_db.length + 1).padStart(3, '0')}`;
 }
 
 // Form submit event
 $('#add-customers-form').on('submit', function (e) {
     e.preventDefault();
 
-    const custId = generateCustomerId();
-    const name = $('#name').val().trim();
-    const email = $('#email').val().trim();
-    const phone = $('#phone').val().trim();
-    const nic = $('#nic').val().trim();
-    const salary = $('#salary').val().trim();
-    const address = $('#address').val().trim();
+    let custId = generateCustomerId();
+    let name = $('#name').val().trim();
+    let email = $('#email').val().trim();
+    let phone = $('#phone').val().trim();
+    let nic = $('#nic').val().trim();
+    let salary = $('#salary').val().trim();
+    let address = $('#address').val().trim();
 
     if (!name || !email || !phone || !nic || !salary || !address) {
         Swal.fire({
@@ -42,7 +42,7 @@ $('#add-customers-form').on('submit', function (e) {
         return;
     }
 
-    const newCustomer = new CustomerModel(custId, name, email, phone, nic, salary, address);
+    let newCustomer = new CustomerModel(custId, name, email, phone, nic, salary, address);
     customer_db.push(newCustomer);
     console.log("Saved Customers:", customer_db);
 
@@ -56,7 +56,6 @@ $('#add-customers-form').on('submit', function (e) {
     });
 });
 
-// Clear form inputs
 function clearForm() {
-    $('#add-customers-form')[0].reset(); // clears all inputs
+
 }
