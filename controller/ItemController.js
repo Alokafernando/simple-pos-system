@@ -1,19 +1,7 @@
 import {customer_db, item_db} from "../db/db.js";
 import { ItemModel } from "../model/ItemModel.js";
 
-function loadItem() {
-    $('#view-item-tbody').empty();
-
-    item_db.map((item, index) => {
-        $('#view-item-tbody').append(`
-            <tr>
-                <td>${item.itemName}</td>
-                <td>${item.price}</td>
-                <td>${item.quantity}</td>
-            </tr>
-        `);
-    });
-}
+let count = 0;
 
 $('#add-item-form').on('submit', function (e) {
     e.preventDefault();
@@ -33,19 +21,14 @@ $('#add-item-form').on('submit', function (e) {
         return;
     }
 
-    function generateCustomerId() {
-        return `ITEM-${String(customer_db.length + 1).padStart(3, '0')}`;
-    }
     let itemCode = generateCustomerId();
-
-    let newItem = new ItemModel(itemCode, name, parseFloat(price), parseInt(quantity));
-
+    let newItem = new ItemModel(itemCode, name, price, quantity);
     item_db.push(newItem);
-    console.log("Saved Items:", item_db);
+    count++;
 
     loadItem();
-    console.log(item_db)
-    clear();
+    clearForm();
+    updateItemCount();
 
     Swal.fire({
         title: "Added Successfully!",
@@ -54,9 +37,33 @@ $('#add-item-form').on('submit', function (e) {
     });
 });
 
-function clear(){
-    $('#itemName').val('');
-    $('#quantity').val('');
-    $('#price').val('');
+// Load items into table
+function loadItem() {
+    $('#view-item-tbody').empty();
+
+    item_db.map((item, index) => {
+        $('#view-item-tbody').append(`
+            <tr>
+                <td>${item.itemName}</td>
+                <td>${item.price}</td>
+                <td>${item.quantity}</td>
+            </tr>
+        `);
+    });
+}
+
+// Generate Customer ID like CUST-001
+function generateCustomerId() {
+    return `ITEM-${String(customer_db.length + 1).padStart(3, '0')}`;
+}
+
+// Clear form inputs
+function clearForm() {
+    $('#add-item-form')[0].reset();
+}
+
+// Set items count display
+function updateItemCount() {
+    $('#customers-count').text(String(customer_db.length).padStart(3, '0'));
 }
 

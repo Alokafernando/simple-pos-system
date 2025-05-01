@@ -1,26 +1,8 @@
 import { customer_db } from "../db/db.js";
 import { CustomerModel } from "../model/CustomerModel.js";
 
-function loadCustomers() {
-    $('#customer-view-tbody').empty();
+let count = 0;
 
-    customer_db.map((customer, index) => {
-        $('#customer-view-tbody').append(`
-            <tr>
-                <td>${customer.custId}</td>
-                <td>${customer.firstName}</td>
-                <td>${customer.address}</td>
-                <td>${customer.salary}</td>
-            </tr>
-        `);
-    });
-}
-
-function generateCustomerId() {
-    return `CUST-${String(customer_db.length + 1).padStart(3, '0')}`;
-}
-
-// Form submit event
 $('#add-customers-form').on('submit', function (e) {
     e.preventDefault();
 
@@ -32,7 +14,7 @@ $('#add-customers-form').on('submit', function (e) {
     let salary = $('#salary').val().trim();
     let address = $('#address').val().trim();
 
-    if (!name || !email || !phone || !nic || !salary || !address) {
+    if (name === ''|| email === '' || phone === '' || nic === '' || salary === '' || address=== '') {
         Swal.fire({
             title: 'Error!',
             text: 'Please fill in all required fields.',
@@ -44,10 +26,11 @@ $('#add-customers-form').on('submit', function (e) {
 
     let newCustomer = new CustomerModel(custId, name, email, phone, nic, salary, address);
     customer_db.push(newCustomer);
-    console.log("Saved Customers:", customer_db);
+    count++;
 
     loadCustomers();
     clearForm();
+    updateCustomerCount();
 
     Swal.fire({
         title: "Customer Added!",
@@ -56,6 +39,34 @@ $('#add-customers-form').on('submit', function (e) {
     });
 });
 
-function clearForm() {
 
+// Load customers into table
+function loadCustomers() {
+    $('#customer-view-tbody').empty();
+
+    customer_db.forEach((customer) => {
+        $('#customer-view-tbody').append(`
+            <tr>
+                <td>${customer.custId}</td>
+                <td>${customer.name}</td>
+                <td>${customer.address}</td>
+                <td>${customer.salary}</td>
+            </tr>
+        `);
+    });
+}
+
+// Generate Customer ID like CUST-001
+function generateCustomerId() {
+    return `CUST-${String(customer_db.length + 1).padStart(3, '0')}`;
+}
+
+// Clear form inputs
+function clearForm() {
+    $('#add-customers-form')[0].reset();
+}
+
+// Set customer count display
+function updateCustomerCount() {
+    $('#items-count').text(String(customer_db.length).padStart(3, '0'));
 }
