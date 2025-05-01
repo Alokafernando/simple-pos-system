@@ -127,12 +127,12 @@
                 <label class="col-sm-4 col-form-label">Customer:</label>
                 <div class="col-sm-8">
                   <div class="input-group">
-                    <select class="form-select">
-                      <!--                      <option>C001</option>-->
-                      <!--                      <option>C002</option>-->
-                      <!--                      <option>C003</option>-->
+                    <select class="form-select" id="customer-section">
+<!--                                            <option>C001</option>-->
+<!--                                            <option>C002</option>-->
+<!--                                            <option>C003</option>-->
                     </select>
-                    <button class="btn btn-success" id="btn-add-customer-1">New Customer</button>                      <!--ffffffffffffffffffff-->
+                    <button class="btn btn-success" id="btn-add-customer-1">New Customer</button>
                   </div>
                 </div>
               </div>
@@ -330,11 +330,11 @@
           <div class="col-md-6">
             <h5>Customer Search</h5>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Input Name/NIC/Tp Here">
-              <button class="btn btn-success" type="button">Search</button>
+              <input type="text" class="form-control" id="customer-input" placeholder="Input Name/NIC/Tp Here">
+              <button class="btn btn-success" type="button" id="customer-search">Search</button>
             </div>
             <div class="input-group">
-              <select class="form-select">
+              <select class="form-select" id="customer-selection">
                 <option selected>Name</option>
                 <option>NIC</option>
                 <option>Phone</option>
@@ -365,7 +365,7 @@
             <th>Salary</th>
           </tr>
           </thead>
-          <tbody>
+          <tbody id="find-customer-tbody">
           </tbody>
         </table>
       </div>
@@ -563,8 +563,8 @@
 
 
 <script src="controller/main.js"></script>
-
 <script type="module" src="controller/ItemController.js"></script>
 <script type="module" src="controller/CustomerController.js"></script>
+<script type="module" src="controller/OrdersController.js"></script>
 </body>
 </html>

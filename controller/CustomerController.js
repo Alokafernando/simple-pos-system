@@ -28,6 +28,7 @@ $('#add-customers-form').on('submit', function (e) {
     customer_db.push(newCustomer);
     count++;
 
+    console.log(newCustomer)
     loadCustomers();
     clearForm();
     updateCustomerCount();
@@ -68,5 +69,47 @@ function clearForm() {
 
 // Set customer count display
 function updateCustomerCount() {
-    $('#items-count').text(String(customer_db.length).padStart(3, '0'));
+    $('#customers-count').text(String(customer_db.length).padStart(3, '0'));
 }
+
+
+
+//search customer
+$('#customer-search').on('click', function () {
+    const searchTerm = $('#customer-input').val().trim().toLowerCase();
+    const searchType = $('#customer-selection').val().toLowerCase();
+    const $tbody = $('#find-customer-tbody');
+
+    $tbody.empty();
+
+    if (!searchTerm) {
+        Swal.fire("Please enter a search term");
+        return;
+    }
+
+    const results = customer_db.filter(customer => {
+        if (searchType === "name") {
+            return (customer.name || "").toLowerCase().includes(searchTerm);
+        } else if (searchType === "nic") {
+            return (customer.nic || "").toLowerCase().includes(searchTerm);
+        } else if (searchType === "phone") {
+            return (customer.phone || "").toLowerCase().includes(searchTerm);
+        }
+        return false;
+    });
+
+    if (results.length === 0) {
+        $tbody.append(`<tr><td colspan="4" class="text-center text-danger">No matching customer found</td></tr>`);
+    } else {
+        results.forEach(customer => {
+            $tbody.append(`
+                <tr>
+                    <td>${customer.custId || "-"}</td>
+                    <td>${customer.name || "-"}</td>
+                    <td>${customer.address || "-"}</td>
+                    <td>${customer.salary || "-"}</td>
+                </tr>
+            `);
+        });
+    }
+});

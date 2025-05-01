@@ -64,6 +64,6 @@ function clearForm() {
 
 // Set items count display
 function updateItemCount() {
-    $('#customers-count').text(String(customer_db.length).padStart(3, '0'));
+    $('#items-count').text(String(customer_db.length).padStart(3, '0'));
 }
 
