@@ -1,7 +1,7 @@
 export class CustomerModel {
-    constructor(custId, firstName, email, phone, nic, salary, address) {
+    constructor(custId, name, email, phone, nic, salary, address) {
         this.custId = custId;
-        this.firstName = firstName;
+        this.name = name;
         this.email = email;
         this.phone = phone;
         this.nic = nic;
