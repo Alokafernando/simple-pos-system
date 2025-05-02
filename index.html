@@ -275,14 +275,13 @@
           <div class="col-md-6">
             <h5>Item Search</h5>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Input Item Name/Code Here">
-              <button class="btn btn-success" type="button">Search</button>
+              <input type="text" class="form-control" id="item-input" placeholder="Input Item Name/Code Here">
+              <button class="btn btn-success" type="button" id="item-search">Search</button>
             </div>
             <div class="input-group">
-              <select class="form-select">
+              <select class="form-select" id="item-selection">
                 <option selected>Name</option>
                 <option>Code</option>
-                <option>Category</option>
               </select>
             </div>
           </div>
@@ -294,10 +293,10 @@
       </div>
 
       <div class="btn-group mb-3">
-        <button class="btn btn-danger">Delete</button>
-        <button class="btn btn-warning">Edit</button>
+        <button class="btn btn-danger" id="item-delete">Delete</button>
+        <button class="btn btn-warning" id="item-update">Edit</button>
         <button class="btn btn-info">Details</button>
-        <button class="btn btn-secondary">Clear</button>
+        <button class="btn btn-secondary" id="item-form-clear">Clear</button>
       </div>
 
       <div class="table-responsive">
@@ -309,7 +308,7 @@
             <th>Quantity</th>
           </tr>
           </thead>
-          <tbody>
+          <tbody id="find-item-tbody">
           </tbody>
         </table>
       </div>
