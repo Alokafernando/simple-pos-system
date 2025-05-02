@@ -82,18 +82,18 @@ $('#customer-search').on('click', function () {
 
     $tbody.empty();
 
-    if (!searchTerm) {
+    if (searchTerm === '') {
         Swal.fire("Please enter a search term");
         return;
     }
 
     const results = customer_db.filter(customer => {
         if (searchType === "name") {
-            return (customer.name || "").toLowerCase().includes(searchTerm);
+            return (customer.name).toLowerCase().includes(searchTerm);
         } else if (searchType === "nic") {
-            return (customer.nic || "").toLowerCase().includes(searchTerm);
+            return (customer.nic).toLowerCase().includes(searchTerm);
         } else if (searchType === "phone") {
-            return (customer.phone || "").toLowerCase().includes(searchTerm);
+            return (customer.phone).toLowerCase().includes(searchTerm);
         }
         return false;
     });
@@ -104,10 +104,10 @@ $('#customer-search').on('click', function () {
         results.forEach(customer => {
             $tbody.append(`
                 <tr>
-                    <td>${customer.custId || "-"}</td>
-                    <td>${customer.name || "-"}</td>
-                    <td>${customer.address || "-"}</td>
-                    <td>${customer.salary || "-"}</td>
+                    <td>${customer.custId}</td>
+                    <td>${customer.name}</td>
+                    <td>${customer.address}</td>
+                    <td>${customer.salary}</td>
                 </tr>
             `);
         });
