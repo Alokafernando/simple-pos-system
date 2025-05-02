@@ -174,7 +174,7 @@ $('#clear').on('click', function (){
 
 //===========delete customer using selected row===========
 $('#delete').on('click', function () {
-    if (selectedRow == '') {
+    if (selectedRow === '') {
         Swal.fire("Please select a row to delete.");
         return;
     }
