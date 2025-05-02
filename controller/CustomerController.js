@@ -157,6 +157,8 @@ $('#update').on('click', function () {
     customer.salary = cells.eq(3).text().trim();
 
     loadCustomers();
+    $('#customer-input').val('');
+    $('#find-customer-tbody').empty();
 
     Swal.fire({
         icon: 'success',
@@ -202,6 +204,7 @@ $('#delete').on('click', function () {
             loadCustomers();
             updateCustomerCount();
             $('#customer-input').val('');
+            $('#find-customer-tbody').empty();
 
             Swal.fire(
                 'Deleted!',

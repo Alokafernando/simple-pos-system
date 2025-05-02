@@ -147,6 +147,8 @@ $('#item-update').on('click', function () {
     item.quantity = cells.eq(2).text().trim();
 
     loadItem();
+    $('#item-input').val('');
+    $('#find-item-tbody').empty();
 
     Swal.fire({
         icon: 'success',
@@ -191,6 +193,7 @@ $('#item-delete').on('click', function () {
             loadItem();
             updateItemCount();
             $('#item-input').val('');
+            $('#find-item-tbody').empty();
 
             Swal.fire(
                 'Deleted!',
