@@ -217,7 +217,7 @@ $('#delete').on('click', function () {
     });
 });
 
-//===========set all customer ids set to selection===========
+//===========set all customer ids set to drop down===========
 export function refreshCustomerIdDropdown() {
     const $select = $('#customer-id-selection');
     $select.empty();
