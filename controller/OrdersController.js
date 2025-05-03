@@ -1,8 +1,10 @@
+import { customer_db, item_db } from "../db/db.js";
 import { refreshCustomerIdDropdown } from './CustomerController.js';
-import { customer_db } from "../db/db.js";
+import { refreshItemIdDropdown } from "./ItemController.js";
 
 $(document).ready(function () {
     refreshCustomerIdDropdown();
+    refreshItemIdDropdown();
 
     $('#customer-id-selection').on('change', function () {
         const selectedId = $(this).val();
@@ -14,6 +16,19 @@ $(document).ready(function () {
         } else {
             $('#customer-address').val('not found..');
             $('#customer-tel').val('not found..');
+        }
+    });
+
+    $('#item-id-dropdown').on('change', function () {
+        const selectedItem = $(this).val();
+        const item = item_db.find(i => i.itemName === selectedItem);
+
+        if (item) {
+            $('#item-price').val(item.price);
+            $('#item-quantity').val(item.quantity);
+        } else {
+            $('#item-price').val('not found..');
+            $('#item-quantity').val('not found..');
         }
     });
 });

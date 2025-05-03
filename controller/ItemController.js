@@ -24,6 +24,7 @@ $('#add-item-form').on('submit', function (e) {
     let itemCode = generateItemId();
     let newItem = new ItemModel(itemCode, name, price, quantity);
     item_db.push(newItem);
+    refreshItemIdDropdown();
     count++;
 
     loadItem();
@@ -203,3 +204,14 @@ $('#item-delete').on('click', function () {
         }
     });
 });
+
+//===========set all item ids set to drop down===========
+export function refreshItemIdDropdown() {
+    const $select = $('#item-id-dropdown');
+    $select.empty();
+
+    item_db.forEach(item => {
+        $select.append(`<option >${item.itemName}</option>`);
+    });
+
+}
