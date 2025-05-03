@@ -221,6 +221,7 @@ $('#delete').on('click', function () {
 export function refreshCustomerIdDropdown() {
     const $select = $('#customer-id-selection');
     $select.empty();
+    $select.append('<option value="">-- Select Customer ID --</option>');
 
     customer_db.forEach(customer => {
         $select.append(`<option >${customer.custId}</option>`);
