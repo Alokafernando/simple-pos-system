@@ -14,8 +14,8 @@ $(document).ready(function () {
             $('#customer-address').val(customer.address);
             $('#customer-tel').val(customer.phone);
         } else {
-            $('#customer-address').val('not found..');
-            $('#customer-tel').val('not found..');
+            $('#customer-address').val('');
+            $('#customer-tel').val('');
         }
     });
 
@@ -27,8 +27,8 @@ $(document).ready(function () {
             $('#item-price').val(item.price);
             $('#item-quantity').val(item.quantity);
         } else {
-            $('#item-price').val('not found..');
-            $('#item-quantity').val('not found..');
+            $('#item-price').val('');
+            $('#item-quantity').val('');
         }
     });
 });
