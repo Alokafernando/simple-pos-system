@@ -27,7 +27,9 @@ $('#add-customers-form').on('submit', function (e) {
 
     let newCustomer = new CustomerModel(custId, name, email, phone, nic, salary, address);
     customer_db.push(newCustomer);
+    refreshCustomerIdDropdown();
     count++;
+    console.log(customer_db)
 
     loadCustomers();
     clearForm();
@@ -214,3 +216,14 @@ $('#delete').on('click', function () {
         }
     });
 });
+
+//===========set all customer ids set to selection===========
+export function refreshCustomerIdDropdown() {
+    const $select = $('#customer-id-selection');
+    $select.empty();
+
+    customer_db.forEach(customer => {
+        $select.append(`<option >${customer.custId}</option>`);
+    });
+
+}
