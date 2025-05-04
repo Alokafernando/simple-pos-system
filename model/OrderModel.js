@@ -1,7 +1,7 @@
 export class OrderModel{
-    constructor(custId, itemId, itemPrice, orderQuantity, orderId, orderDate, total, ) {
+    constructor(custId, itemName, itemPrice, orderQuantity, orderId, orderDate, total, ) {
         this.custId = custId;
-        this.itemId = itemId;
+        this.itemName = itemName;
         this.itemPrice = itemPrice;
         this.orderQuantity = orderQuantity;
         this.orderId = orderId;

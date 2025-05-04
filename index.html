@@ -99,7 +99,7 @@
             <h5 class="card-title text-success">My Orders</h5>
             <div class="text-center">
               <i class="fas fa-shopping-cart card-icon text-secondary"></i>
-              <div class="card-count">000</div>
+              <div class="card-count" id="order-count">000</div>
             </div>
           </div>
         </div>
@@ -152,11 +152,11 @@
               <h5 class="card-title mt-4">Invoice Details</h5>
               <div class="mb-3">
                 <label class="form-label">Date:</label>
-                <input type="date" class="form-control">
+                <input type="date" class="form-control" id="order-date" readonly>
               </div>
               <div class="mb-3">
                 <label class="form-label">Order ID:</label>
-                <input type="text" class="form-control" readonly >
+                <input type="text" class="form-control" id="order-id-input" readonly >
               </div>
             </div>
           </div>
@@ -189,14 +189,14 @@
               </div>
 
               <div class="d-grid">
-                <button class="btn btn-primary" >Order Item</button>
+                <button class="btn btn-primary" disabled>Order Item</button>
               </div>
 
               <h5 class="card-title mt-4">Order Details</h5>
               <div class="mb-3 row">
                 <label class="col-sm-4 col-form-label">Order Quantity:</label>
                 <div class="col-sm-8">
-                  <input type="number" class="form-control"  >
+                  <input type="number" class="form-control"  id="order-quantity">
                 </div>
               </div>
               <div class="mb-3 row">
@@ -207,7 +207,7 @@
               </div>
 
               <div class="d-grid mt-4">
-                <button class="btn btn-danger">Place Order</button>
+                <button class="btn btn-danger" id="place-order">Place Order</button>
               </div>
             </div>
           </div>
@@ -227,33 +227,35 @@
                 <th style="background-color: #17a2b8; color: white;">Total</th>
               </tr>
               </thead>
-              <tbody>
+              <tbody id="orders-tbody">
               </tbody>
             </table>
           </div>
 
           <!-- Total Section -->
           <div class="order-total-section">
-            <div class="total-amount">Total: 00.0Rs/=</div>
+            <div class="total-amount">
+              Total: <div id="total" style="display:inline-block; min-width:60px;">00.0</div> Rs/=
+            </div>
             <div class="row">
               <div class="col-md-4">
                 <label class="form-label">Cash:</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="cash">
               </div>
               <div class="col-md-4">
                 <label class="form-label">Balance:</label>
-                <input type="text" class="form-control" readonly>
+                <input type="text" class="form-control" id="balance" readonly>
               </div>
               <div class="col-md-4">
                 <label class="form-label">Discount:</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="discount">
               </div>
             </div>
 
             <div class="order-action-buttons">
-              <button class="btn btn-warning">Clear</button>
-              <button class="btn btn-danger">Remove Order</button>
-              <button class="btn btn-success">Submit Order</button>
+              <button class="btn btn-warning" id="order-clear">Clear</button>
+              <button class="btn btn-danger"  id="remove-order">Remove Order</button>
+              <button class="btn btn-success" id="submit-order">Submit Order</button>
             </div>
           </div>
         </div>
