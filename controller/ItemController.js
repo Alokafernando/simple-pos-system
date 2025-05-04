@@ -209,7 +209,7 @@ $('#item-delete').on('click', function () {
 export function refreshItemIdDropdown() {
     const $select = $('#item-id-dropdown');
     $select.empty();
-    $select.append('<option value="">-- Select Item ID --</option>');
+    $select.append('<option value="">-- Select Item Name --</option>');
 
     item_db.forEach(item => {
         $select.append(`<option >${item.itemName}</option>`);
