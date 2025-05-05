@@ -129,31 +129,36 @@ $(document).ready(function () {
 
 });
 
-// function updateBalanceAndTotal() {
-//     let cash = parseFloat($('#cash').val());
-//     let total = parseFloat($('#total').text());
-//     let discount = parseFloat($('#discount').val()) || 0;
-//
-//     if (isNaN(total) || total <= 0) return;
-//
-//     if (discount < 0 || discount > 100) {
-//         $('#final-total').text('Invalid Discount');
-//         $('#balance').text('');
-//         return;
-//     }
-//
-//     let discountedTotal = total - (total * (discount / 100));
-//     $('#final-total').text(discountedTotal.toFixed(2));
-//
-//     if (!isNaN(cash) && cash > 0) {
-//         let balance = cash - discountedTotal;
-//         $('#balance').text(balance.toFixed(2));
-//     } else {
-//         $('#balance').text('');
-//     }
-// }
-//
-// $('#cash, #discount').on('input', updateBalanceAndTotal);
+function updateBalanceAndTotal() {
+    let cash = $('#cash').val();
+    let total = $('#total').text();
+    let discount = $('#discount').val();
+    let balance = cash - total;
+
+    if (total === '' || total === 0){return;}
+
+    $('#balance').val(balance);
+
+
+    if (discount < 0 || discount > 100) {
+        Swal.fire("Discount Error", "Invalid Discount. Must be between 0 and 100.", "error");
+        return;
+    }
+
+    let discountedTotal = total - (total * (discount / 100));
+    $('#total').text(discountedTotal.toFixed(2));
+
+    // Calculate balance if cash is valid
+    if (!isNaN(cash) && cash >= 0) {
+        let balance = cash - discountedTotal;
+        $('#balance').text(balance.toFixed(2));
+    } else {
+        $('#balance').text('');
+    }
+
+}
+
+$('#cash, #discount').on('input', updateBalanceAndTotal);
 
 
 //generate order id
