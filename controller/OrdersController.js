@@ -145,20 +145,21 @@ function updateBalanceAndTotal() {
         return;
     }
 
-    let discountedTotal = total - (total * (discount / 100));
-    $('#total').text(discountedTotal.toFixed(2));
-
-    // Calculate balance if cash is valid
-    if (!isNaN(cash) && cash >= 0) {
-        let balance = cash - discountedTotal;
-        $('#balance').text(balance.toFixed(2));
-    } else {
-        $('#balance').text('');
-    }
+    // let discountedTotal = total - (total * (discount / 100));
+    // $('#total').text(discountedTotal.toFixed(2));
+    //
+    // // Calculate balance if cash is valid
+    // if (!isNaN(cash) && cash >= 0) {
+    //     let balance = cash - discountedTotal;
+    //     $('#balance').text(balance.toFixed(2));
+    // } else {
+    //     $('#balance').text('');
+    // }
 
 }
 
 $('#cash, #discount').on('input', updateBalanceAndTotal);
+
 
 
 //generate order id

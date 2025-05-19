@@ -127,11 +127,7 @@
                 <label class="col-sm-4 col-form-label">Customer:</label>
                 <div class="col-sm-8">
                   <div class="input-group">
-                    <select class="form-select" id="customer-id-selection">
-<!--                                            <option>C001</option>-->
-<!--                                            <option>C002</option>-->
-<!--                                            <option>C003</option>-->
-                    </select>
+                    <select class="form-select" id="customer-id-selection"></select>
                     <button class="btn btn-success" id="btn-add-customer-1">New Customer</button>
                   </div>
                 </div>
@@ -168,11 +164,7 @@
               <div class="mb-3 row">
                 <label class="col-sm-4 col-form-label">Item:</label>
                 <div class="col-sm-8">
-                  <select class="form-select" id="item-id-dropdown">
-                    <!--                    <option>Coca-Cola 1L</option>-->
-                    <!--                    <option>Pepsi 1L</option>-->
-                    <!--                    <option>Sprite 500ml</option>-->
-                  </select>
+                  <select class="form-select" id="item-id-dropdown"></select>
                 </div>
               </div>
               <div class="mb-3 row">
@@ -390,7 +382,7 @@
             </svg>
             <input type="text" id="name" name="name" class="form-control" placeholder="John" required>
           </div>
-          <div class="error-message" id="firstNameError">Please enter a first name</div>
+          <div class="error-message" id="firstNameError"></div>
         </div>
 
         <div class="form-group">
@@ -402,7 +394,7 @@
             </svg>
             <input type="email" id="email" name="email" class="form-control" placeholder="john.doe@example.com" required>
           </div>
-          <div class="error-message" id="emailError">Please enter a valid email address</div>
+          <div class="error-message" id="emailError"></div>
         </div>
         <div class="form-group">
           <label for="phone">Phone Number</label>
@@ -412,6 +404,7 @@
             </svg>
             <input type="tel" id="phone" name="phone" class="form-control" placeholder="(123) 456-7890">
           </div>
+          <div class="error-message" id="phoneError"></div>
         </div>
         <div class="form-group">
           <label class="required" for="nic">NIC Number</label>
@@ -422,7 +415,7 @@
             </svg>
             <input type="text" id="nic" name="nic" class="form-control" placeholder="123456789X" required>
           </div>
-          <div class="error-message" id="nicError">Please enter a valid NIC number</div>
+          <div class="error-message" id="nicError"></div>
         </div>
         <div class="form-group">
           <label for="salary">Salary</label>
@@ -433,6 +426,7 @@
             </svg>
             <input type="number" id="salary" name="salary" class="form-control" placeholder="50000" min="0" step="0.01">
           </div>
+          <div class="error-message" id="salaryError"></div>
         </div>
         <div class="form-group full-width">
           <label for="address">Address</label>
@@ -443,11 +437,12 @@
             </svg>
             <input type="text" id="address" name="address" class="form-control" placeholder="123 Main St, City, State, Zip">
           </div>
+          <div class="error-message" id="addressError"></div>
         </div>
       </div>
       <div class="form-actions">
         <button type="button" class="btn btn-secondary" id="cancel-Button">Cancel</button>
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" id="customer-save-btn" class="btn btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
             <polyline points="17 21 17 13 7 13 7 21"></polyline>
