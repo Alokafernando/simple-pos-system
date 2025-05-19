@@ -181,7 +181,7 @@
               </div>
 
               <div class="d-grid">
-                <button class="btn btn-primary" disabled>Order Item</button>
+                <button class="btn btn-primary" disabled></button>
               </div>
 
               <h5 class="card-title mt-4">Order Details</h5>
@@ -199,7 +199,7 @@
               </div>
 
               <div class="d-grid mt-4">
-                <button class="btn btn-danger" id="place-order">Place Order</button>
+                <button class="btn btn-danger" id="place-order">Add Item</button>
               </div>
             </div>
           </div>
@@ -217,6 +217,7 @@
                 <th style="background-color: #17a2b8; color: white;">Price</th>
                 <th style="background-color: #17a2b8; color: white;">Quantity</th>
                 <th style="background-color: #17a2b8; color: white;">Total</th>
+                <th style="background-color: #17a2b8; color: white;">Action</th>
               </tr>
               </thead>
               <tbody id="orders-tbody">
@@ -226,8 +227,11 @@
 
           <!-- Total Section -->
           <div class="order-total-section">
+            <div class="total-amount" id="total-label">
+              Total : <div id="total" style="display:inline-block; min-width:60px; color: #4a90e2">00.0</div> Rs/=
+            </div>
             <div class="total-amount">
-              Total: <div id="total" style="display:inline-block; min-width:60px;">00.0</div> Rs/=
+              Sub Total : <div id="sub-total" style="display:inline-block; min-width:60px;">00.0</div> Rs/=
             </div>
             <div class="row">
               <div class="col-md-4">

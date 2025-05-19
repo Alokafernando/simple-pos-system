@@ -41,19 +41,18 @@ $(document).ready(function () {
         }
     });
 
-    // Place item to pending orders
+    // // Place item to pending orders
     $('#place-order').on('click', function () {
         let customer = $('#customer-id-selection').val();
         let itemName = $('#item-id-dropdown').val();
-        let price = parseFloat($('#item-price').val());
-        let orderQuantity = parseInt($('#order-quantity').val());
-        let availableQuantity = parseInt($('#item-quantity').val());
+        let price = $('#item-price').val();
+        let orderQuantity = $('#order-quantity').val();
+        let availableQuantity = $('#item-quantity').val();
         let orderDate = $('#order-date').val();
         let orderId = currentOrderId;
 
-
         const defaultCustomerText = '-- Select Customer ID --';
-        const defaultItemText = '-- Select Item ID --';
+        const defaultItemText = '-- Select Item Name --';
 
         if (customer === defaultCustomerText || customer === '') {
             Swal.fire("Selection Error", "Please select a valid Customer ID.", "error");
@@ -65,7 +64,7 @@ $(document).ready(function () {
             return;
         }
 
-        if (orderQuantity <= 0 || isNaN(orderQuantity)) {
+        if (orderQuantity <= 0) {
             Swal.fire("Quantity Error", "Please enter a valid order quantity.", "error");
             return;
         }
@@ -78,14 +77,20 @@ $(document).ready(function () {
         const item = item_db.find(i => i.itemName === itemName);
         item.quantity -= orderQuantity;
 
-        pendingOrders.push({
-            orderId,
-            customerId: customer,
-            itemName,
-            price,
-            orderQuantity,
-            orderDate
-        });
+        let existingOrder = pendingOrders.find(o => o.itemName === itemName && o.customerId === customer);
+
+        if (existingOrder) {
+            existingOrder.orderQuantity += orderQuantity;
+        } else {
+            pendingOrders.push({
+                orderId,
+                customerId: customer,
+                itemName,
+                price,
+                orderQuantity,
+                orderDate
+            });
+        }
 
         refreshItemIdDropdown();
         loadOrders();
@@ -93,6 +98,7 @@ $(document).ready(function () {
         $('#item-price').val('');
         $('#item-quantity').val('');
     });
+
 
     //submit order
     $('#submit-order').on('click', function () {
