@@ -45,9 +45,9 @@ $(document).ready(function () {
     $('#place-order').on('click', function () {
         let customer = $('#customer-id-selection').val();
         let itemName = $('#item-id-dropdown').val();
-        let price = $('#item-price').val();
-        let orderQuantity = $('#order-quantity').val();
-        let availableQuantity = $('#item-quantity').val();
+        let price = parseFloat($('#item-price').val());
+        let orderQuantity = parseInt($('#order-quantity').val());
+        let availableQuantity = parseInt($('#item-quantity').val());
         let orderDate = $('#order-date').val();
         let orderId = currentOrderId;
 
@@ -123,8 +123,7 @@ $(document).ready(function () {
     $('#order-clear').on('click', function () {
         $('#cash').val('');
         $('#discount').val('');
-        $('#balance').text('');
-        $('#final-total').text('');
+        $('#balance').val('');
     });
 
     // Remove order preview table
@@ -136,35 +135,38 @@ $(document).ready(function () {
 });
 
 function updateBalanceAndTotal() {
-    let cash = $('#cash').val();
-    let total = $('#total').text();
-    let discount = $('#discount').val();
-    let balance = cash - total;
+    let cash = parseFloat($('#cash').val()) || 0;
+    let total = parseFloat($('#total').text()) || 0;
+    let discount = parseFloat($('#discount').val()) || 0;
 
-    if (total === '' || total === 0){return;}
-
-    $('#balance').val(balance);
-
-
-    if (discount < 0 || discount > 100) {
-        Swal.fire("Discount Error", "Invalid Discount. Must be between 0 and 100.", "error");
+    if (total === 0) {
+        $('#balance').val('');
+        $('#sub-total').text('');
         return;
     }
 
-    // let discountedTotal = total - (total * (discount / 100));
-    // $('#total').text(discountedTotal.toFixed(2));
-    //
-    // // Calculate balance if cash is valid
-    // if (!isNaN(cash) && cash >= 0) {
-    //     let balance = cash - discountedTotal;
-    //     $('#balance').text(balance.toFixed(2));
-    // } else {
-    //     $('#balance').text('');
-    // }
+    if (discount < 0 || discount > 100) {
+        Swal.fire("Discount Error", "Invalid Discount. Must be between 0 and 100.", "error");
+        $('#balance').val('');
+        $('#sub-total').text('');
+        return;
+    }
 
+    let discountedTotal = total - (total * (discount / 100));
+    $('#sub-total').text(discountedTotal.toFixed(2));
+
+    if (cash < discountedTotal) {
+        Swal.fire("Error", "Insufficient Credit. Check Cash.....", "error");
+        $('#balance').val('');
+        return;
+    }
+
+    let balance = cash - discountedTotal;
+    $('#balance').val(balance.toFixed(2));
 }
 
 $('#cash, #discount').on('input', updateBalanceAndTotal);
+
 
 
 
@@ -201,7 +203,7 @@ function loadOrders() {
     let grandTotal = 0;
 
     pendingOrders.forEach(order => {
-        let total = order.price * order.orderQuantity;
+        let total = parseFloat(order.price) * parseInt(order.orderQuantity);
         grandTotal += total;
 
         $('#orders-tbody').append(`
