@@ -171,7 +171,7 @@ $('#update').on('click', function () {
 
     let nameRegex = /^[A-Za-z ]{5,20}$/;
     let addressRegex = /^.{7,}$/;
-    let salaryRegex = /^\d+(\.\d{2})?$/;
+    let salaryRegex = /^(?:\d{2,6}(?:\.\d{2})?|1000000(?:\.00)?)$/;
 
     let name = cells.eq(1).text().trim();
     let address = cells.eq(2).text().trim();
@@ -275,7 +275,7 @@ function validateAll() {
     let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     let phoneRegex = /^(?:\+94|0)?7\d{8}$/;
     let nicRegex = /^(\d{9}[Vv]|\d{12})$/;
-    let salaryRegex = /^\d+(\.\d{2})?$/;
+    let salaryRegex = /^(?:\d{2,6}(?:\.\d{2})?|1000000(?:\.00)?)$/;
     let addressRegex = /^.{7,}$/;
 
     let customerName = $('#name').val();
@@ -358,7 +358,7 @@ $('#nic').on('input', function () {
 $('#salary').on('input', function () {
     clearAllErrors();
 
-    let salaryRegex = /^\d+(\.\d{2})?$/;
+    let salaryRegex = /^(?:\d{2,6}(?:\.\d{2})?|1000000(?:\.00)?)$/;
     let customerSalary = $('#salary').val();
 
     if (!salaryRegex.test(customerSalary)) {
