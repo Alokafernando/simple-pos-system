@@ -143,9 +143,34 @@ $('#item-update').on('click', function () {
     if (!item) return;
 
     const cells = selectedRow.find('td');
-    item.itemName = cells.eq(0).text().trim();
-    item.price = cells.eq(1).text().trim();
-    item.quantity = cells.eq(2).text().trim();
+
+    let nameRegex = /^[A-Za-z ]{2,30}$/;
+    let priceRegex = /^(?:\d{2,6}(?:\.\d{2})?|10000(?:\.00)?)$/;
+    let quantityRegex = /^(?:[1-9]|[1-9]\d{1,3}|10000)$/;
+
+    let itemName = cells.eq(0).text().trim();
+    let itemPrice = cells.eq(1).text().trim();
+    let itemQuantity = cells.eq(2).text().trim();
+
+    let isValid =
+        nameRegex.test(itemName) &&
+        priceRegex.test(itemPrice) &&
+        quantityRegex.test(itemQuantity);
+
+    if (!isValid){
+        Swal.fire({
+            title: 'Error!',
+            text: 'One or more fields are invalid. Please correct them before updating.',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        });
+        $('#find-item-tbody').empty();
+        return;
+    }
+
+    item.itemName = itemName;
+    item.price = itemPrice;
+    item.quantity = itemQuantity;
 
     loadItem();
     $('#item-input').val('');
@@ -214,5 +239,69 @@ export function refreshItemIdDropdown() {
     item_db.forEach(item => {
         $select.append(`<option >${item.itemName}</option>`);
     });
-
 }
+
+// === apply validations ===
+function validateAll() {
+    let nameRegex = /^[A-Za-z ]{2,30}$/;
+    let priceRegex = /^(?:\d{2,6}(?:\.\d{2})?|10000(?:\.00)?)$/;
+    let quantityRegex = /^(?:[1-9]|[1-9]\d{1,3}|10000)$/;
+
+    let itemName = $('#itemName').val();
+    let price = $('#price').val();
+    let quantity = $('#quantity').val();
+
+    return (
+        nameRegex.test(itemName) &&
+        priceRegex.test(price) &&
+        quantityRegex.test(quantity)
+    );
+}
+
+// clear error message
+function clearAllErrors() {
+    $('#itemNameError, #priceError, #quantityError').text("");
+}
+
+// Disable save button
+$('#btn-item-save').prop('disabled', true);
+
+$('#itemName').on('input', function () {
+    clearAllErrors();
+
+    let nameRegex = /^[A-Za-z ]{2,30}$/;
+    let itemName = $('#itemName').val();
+
+    if (!nameRegex.test(itemName)) {
+        $('#itemNameError').text("Invalid Name: 2-30 characters, letters and spaces only.").css("color", "red");
+    }
+
+    $('#btn-item-save').prop('disabled', !validateAll());
+});
+
+$('#price').on('input', function () {
+    clearAllErrors();
+
+    let priceRegex = /^(?:\d{2,6}(?:\.\d{2})?|1000000(?:\.00)?)$/;
+    let itemPrice = $('#price').val();
+
+    if (!priceRegex.test(itemPrice)) {
+        $('#priceError').text("Invalid Price: enter a valid amount like 100 or 100.00.").css("color", "red");
+    }
+
+    $('#btn-item-save').prop('disabled', !validateAll());
+});
+
+$('#quantity').on('input', function (){
+   clearAllErrors();
+
+   let quantityRegex =  /^(?:[1-9]|[1-9]\d{1,3}|10000)$/;
+   let itemQuantity = $('#quantity').val();
+
+   if (!quantityRegex.test(itemQuantity)){
+       $('#quantityError').text("Invalid Quantity: enter a number between 1 and 10000.").css("color", "red");
+   }
+
+    $('#btn-item-save').prop('disabled', !validateAll());
+
+});
