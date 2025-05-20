@@ -6,6 +6,7 @@ let pendingOrders = [];
 let currentOrderId = null;
 
 
+
 $(document).ready(function () {
     refreshCustomerIdDropdown();
     refreshItemIdDropdown();
@@ -128,8 +129,16 @@ $(document).ready(function () {
 
     // Remove order preview table
     $('#remove-order').on('click', function () {
+        pendingOrders.forEach(order => {
+            let item = item_db.find(i => i.itemName === order.itemName);
+            if (item) {
+                item.quantity += order.orderQuantity;
+            }
+        });
+
         pendingOrders = [];
         loadOrders();
+        refreshItemIdDropdown();
     });
 
 });
@@ -165,9 +174,8 @@ function updateBalanceAndTotal() {
     $('#balance').val(balance.toFixed(2));
 }
 
-$('#cash, #discount').on('input', updateBalanceAndTotal);
-
-
+// $('#cash, #discount').on('input', updateBalanceAndTotal);           ///////////don't
+$('#cash, #discount').on('blur', updateBalanceAndTotal);
 
 
 //generate order id
