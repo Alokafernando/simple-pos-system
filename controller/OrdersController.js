@@ -210,19 +210,40 @@ function loadOrders() {
     $('#orders-tbody').empty();
     let grandTotal = 0;
 
-    pendingOrders.forEach(order => {
+    pendingOrders.forEach((order, index) => {
         let total = parseFloat(order.price) * parseInt(order.orderQuantity);
         grandTotal += total;
 
         $('#orders-tbody').append(`
-            <tr>
+            <tr data-index="${index}">
                 <td>${order.itemName}</td>
                 <td>${order.price}</td>
                 <td>${order.orderQuantity}</td>
                 <td>${total.toFixed(2)}</td>
+                <td><button class="remove-order-btn btn btn-sm" id="remove" style="background-color: #CD5656; color: #fff;">Remove</button></td>
             </tr>
         `);
     });
 
     $('#total').text(grandTotal.toFixed(2));
 }
+
+
+// replace order quantity to item quantity
+$('#orders-tbody').on('click', '#remove', function () {
+    const $row = $(this).closest('tr');
+    const rowIndex = $row.data('index');
+
+    const removedOrder = pendingOrders[rowIndex];
+    const item = item_db.find(i => i.itemName === removedOrder.itemName);
+    if (item) {
+        item.quantity += removedOrder.orderQuantity;
+    }
+
+    pendingOrders.splice(rowIndex, 1);
+
+    loadOrders();
+    refreshItemIdDropdown();
+});
+
+
